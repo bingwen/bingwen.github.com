@@ -47,7 +47,10 @@ Markdown是一种文本格式，只提供比较简单的几个标记，用它来
 
 5. 调整下我们代码库下的文件，创建_config.yml文件，这是配置文件；_layouts目录，这里面可以放模板文件；_posts目录，这里面放你写好的博客；另外就是css目录，img目录之类的
 
-6. 运行`jekyll --pygments --safe`  
+6. 运行
+
+	jekyll --pygments --safe
+
 可以自动生成一个_sites目录，然后你会发现，凡是不以下划线开头的文件，都被原封不动的拷到该目录下了，然后_post目录下的md文件都被以某种规则传换成了html文件，当然index.html也被转换了，我们需要在git的.gitignore把_sites目录屏蔽掉,只要把其他文件传到github上就可以了，因为github会自动在它那边用jekyll帮我们生成需要的文档
 
 7. 添加模板，在_layouts目录下新建一个default.html文件，然后用html语言设计你的页面风格吧
