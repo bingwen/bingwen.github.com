@@ -1,2 +1,2 @@
-bingwen.github.com
+bingwenshi.com
 ==================
