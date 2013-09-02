@@ -1,8 +1,3 @@
----
-layout: post
----
-vim config
-=================
 
 [user]
  name = shibingwen
