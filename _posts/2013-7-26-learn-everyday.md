@@ -1,7 +1,8 @@
 ---
-layout:post
-title:learn everyday
+layout: post
 ---
+learn everyday
+=================
 ##每天一个vim快捷键
 
 
