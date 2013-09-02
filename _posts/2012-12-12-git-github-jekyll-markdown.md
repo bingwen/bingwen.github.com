@@ -1,8 +1,7 @@
 ---
 layout: post
-title: Git+Github+Jekyll+Markdown=搭建个人博客
 ---
-{{ page.title }}
+Git+Github+Jekyll+Markdown=搭建个人博客
 ================
 
 <p class="meta"> 12 Dec 2012 </p>
@@ -25,7 +24,7 @@ Jekyll是github的三个创始人之一Tom的作品，简单来说就是一个�
 Markdown
 -------------------
 
-Markdown是一种文本格式，只提供比较简单的几个标记，用它来写博客，我们不用考虑那么多的格式的问题，非常轻量级的文本格式。当然，jekyll还支持其他的格式，我目前用的是markdown
+Markdown是一种文本格式，只提供比较简单的几个标记，用它来写博客，我们不用考虑那么多的格式的问题，非常轻量级的文本格式。当然，jekyll还支持其他的格式，我目前用的是markdown，这里，如果你使用mac os，推荐使用[Mou](http://mouapp.com/)这个编辑器
 
 
 开始搭建博客之旅（傻瓜教程，有点长）
@@ -33,33 +32,25 @@ Markdown是一种文本格式，只提供比较简单的几个标记，用它来
 
 1. 注册github账号，比如叫yourname，然后创建一个叫yourname.github.com的Repo，一般创建好之后，github会自动发邮件提示你是否开启GithubPages功能（它识别了刚才创建的Repo是用来创建静态网页的），在Setting中可以开启Pages功能
 
-
-2. 在本地新建一个文件夹（比如myblog），然后终端输入`git init `(我使用的是mac ox，自带git，如果是linux，可以自己安装git，如果是windows，那就不要玩这个了，哈哈)
-可以初始化git目录，  
-然后`git clone https://github.com/yourname/yourname.github.com.git`  
+2. 在本地新建一个文件夹（比如myblog），然后终端输入`git init `(我使用的是mac ox，自带git，如果是linux，可以自己安装git，如果是windows，那就不要玩这个了，^_^)，可以初始化git目录，然后
+	`git clone https://github.com/yourname/yourname.github.com.git`  
 把刚才创建的库pull到本地来
-
 
 3. 在yourname.github.com创建一个index.html，随便输点什么东西，  
 	`git commit index.html -m "add index.html"`  
 	`git push origin master`  
 输入github的账号和密码，就可以把你刚才创建的index.html提交到github上了，so easy，蓝后，你就可以访问yourname.github.com看到你刚才输入的东西啦
 
-
 4. 说好的jkeyll呢？jkeyll是ruby写的，我们先要检查下自己电脑上ruby的版本，我电脑自带的是1.8我们需要去ruby的官网上下载1.9的版本（因为1.8的版本在mac上安装jekyll始终失败，被坑惨了），安装好后，运行
 	`gem install jekyll`
-就可以自动帮你把jekyll安装好
-
+就可以自动帮你把jekyll安装好. (补充,ruby这里容易出现坑儿，jekyll在1.8.x下也许会出现问题，建议大家用最新的ruby版本，另外可以使用淘宝的[ruby源](http://ruby.taobao.org))
 
 5. 调整下我们代码库下的文件，创建_config.yml文件，这是配置文件；_layouts目录，这里面可以放模板文件；_posts目录，这里面放你写好的博客；另外就是css目录，img目录之类的
-
 
 6. 运行`jekyll --pygments --safe`  
 可以自动生成一个_sites目录，然后你会发现，凡是不以下划线开头的文件，都被原封不动的拷到该目录下了，然后_post目录下的md文件都被以某种规则传换成了html文件，当然index.html也被转换了，我们需要在git的.gitignore把_sites目录屏蔽掉,只要把其他文件传到github上就可以了，因为github会自动在它那边用jekyll帮我们生成需要的文档
 
-
 7. 添加模板，在_layouts目录下新建一个default.html文件，然后用html语言设计你的页面风格吧
-
 
 8. 个人域名，在你的代码根目录下创建CNAME文件，然后写上你的域名比如yourname.com，然后在域名服务器，指向github的IP 207.97.227.245就可以啦
 
