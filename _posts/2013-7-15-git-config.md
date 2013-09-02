@@ -1,4 +1,6 @@
-
+---
+layout: default
+---
 [user]
  name = shibingwen
  email = shibingwen@douban.com
