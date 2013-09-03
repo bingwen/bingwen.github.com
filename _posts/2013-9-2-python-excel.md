@@ -43,9 +43,18 @@ https://pypi.python.org/pypi/xlrd
 	sheet.cell(0,0) # u'hello'
 	sheet.cell(0,0).value # 'hello'
 	
+
 xlwt
 =====
 https://pypi.python.org/pypi/xlwt
+
+可能容易遇到的问题是
+
+* 写中文，用ms office打开后乱码
+* 日期的读写
+* 重复写cell报错
+
+下面都给了解决的方法
 
 	import xlwt
 	
@@ -71,7 +80,9 @@ https://pypi.python.org/pypi/xlwt
 	
 	sheet.write(x, y, "你好啊", style)
 	
+
 在xlwt的源码中可以找到一个目录，下面放了一些例子
+
 * dates.py 使用不同的日期格式
 * hyperlinks.py 超链接
 * merged.py 合并单元格
