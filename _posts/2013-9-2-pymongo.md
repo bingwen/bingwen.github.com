@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-python中使用pymongo来连接mongo数据库  
+###python中使用pymongo来连接mongo数据库  
 
 	import pymongo  
 
@@ -34,3 +34,7 @@ python中使用pymongo来连接mongo数据库
 	
 	#改
 	db.update({'name':'zhangsan'},{"$set":{"email":"zhangsan@xx.com"}})
+	
+	
+###mongo 创建collextion
+db.createCollection("mytestdb ", {capped:true, size:10000}) 单位是kb
