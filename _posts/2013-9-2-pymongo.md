@@ -17,24 +17,29 @@ layout: default
 	coll.find()
 	
 	#条件查询
-	db.find({'name':'zhangsan'})
+	coll.find({'name':'zhangsan'})
 	
 	#统计
-	db.find().count()
+	coll.find().count()
 	
 	#排序
-	db.find().sort("name")
-	db.find().sort("name", pymongo.DESCENDING)
+	coll.find().sort("name")
+	coll.find().sort("name", pymongo.DESCENDING)
 	
 	#增
-	db.insert({'name':'lisi'})
+	coll.insert({'name':'lisi'})
 	
 	#删
-	db.remove({'name':'zhangsan'})
+	coll.remove({'name':'zhangsan'})
 	
 	#改
-	db.update({'name':'zhangsan'},{"$set":{"email":"zhangsan@xx.com"}})
+	coll.update({'name':'zhangsan'},{"$set":{"email":"zhangsan@xx.com"}})
 	
 	
 ###mongo 创建collextion
-db.createCollection("mytestdb ", {capped:true, size:10000}) 单位是kb
+	db.createCollection("mytestdb ", {capped:false, size:10000}) 单位是kb
+	
+	#capped 这货要注意了，如果设置成True，就固定了，也就是说你插入一个字典，这个字典的key就定死了，只能更改值，但不能插入新的key，也不能删除这个key
+
+###条件查询
+	coll.find({'user_id': {"$in": ids}})
