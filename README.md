@@ -1,2 +1,2 @@
-bingwenshi.com
+blog.bingwenshi.com
 ==================
