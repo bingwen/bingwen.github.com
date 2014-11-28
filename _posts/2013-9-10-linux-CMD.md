@@ -1,5 +1,10 @@
 ---
-layout: default
+layout: post
+title: "linux常用命令"
+date: 2013-09-10 10:29:51
+category: "技术"
+tags: linux
+author: bingwen
 ---
 
 System
@@ -12,6 +17,8 @@ System
 	# lsusb -tv              # 列出所有USB设备
 	# lsmod                  # 列出加载的内核模块
 	# env                    # 查看环境变量
+
+<!--break-->
 
 Source
 

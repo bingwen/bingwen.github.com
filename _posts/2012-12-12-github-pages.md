@@ -1,7 +1,14 @@
 ---
-layout: default
+layout: post
+title: "使用github pages搭建博客"
+date: 2012-12-12 10:29:51
+category: "技术"
+tags: github pages jekyll 
+author: bingwen
 ---
+
 很早之前就想搭建一个自己的博客了，只是比较懒惰，总是不肯抽时间去弄，不过，好在github流行起来了，给我提供了更多的选择，搭建过程也非常简单，废话少说，先介绍下用到的工具和我搭建的过程
+<!--break-->
 
 Git和Github
 -------------------

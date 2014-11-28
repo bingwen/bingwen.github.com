@@ -1,9 +1,14 @@
 ---
-layout: default
+layout: post
+title: "git配置"
+date: 2013-07-15 10:29:51
+category: "技术"
+tags: github
+author: bingwen
 ---
 	[user]
-	  name = shibingwen
-	  email = mail@bingwenshi.com
+	  name = bingwen
+	  email = bingwenst@foxmail.com
 	[alias]
 	  co = checkout
 	  ci = commit -a

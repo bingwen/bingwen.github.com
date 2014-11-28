@@ -1,0 +1,74 @@
+---
+layout: post
+title: "如何理解yield"
+date: 2014-05-04 10:29:51
+category: "Python提高班"
+tags: python
+author: bingwen
+---
+要想理解`yield`, 需要先理解`generators`(生成器), 要想理解`generators`, 需要先理解iterables(迭代器)
+<!--break-->
+
+##1. iterables
+
+先看这段代码:
+
+    >>> mylist = [1, 2, 3]
+    >>> for i in mylist:
+    ...    print(i)
+    1
+    2
+    3
+    >>> mylist2 = [x for x in range(3)]
+    >>> for i in mylist2:
+    ...     print i
+    ...
+    0
+    1
+    2
+
+这段代码的意思是list(列表)在python中是可以迭代的, 如果你需要一个接一个的访问一个数据集合, 大多数的时候使用一个`for xx in yy`这种方式, 那么这里的`yy`就是一个可以迭代访问的数据集合, 很明显, `list`, `tuple`, `string`, `file`这些都是迭代器
+
+`iterables`是**保存在内存中**的, 你可以随便访问他们, 比如上面的`mylist`,`mylist2`
+
+##2. generators
+
+再看这一段
+
+    >>> mygenerator = (x*x for x in range(3))
+    >>> for i in mygenerator:
+    ...    print(i)
+    0
+    1
+    4
+    >>> mygenerator
+    <generator object <genexpr> at 0x10d35eaa0>
+
+这段代码中`mygenerator`就是一个迭代器,  跟上文的`mylist2`生成方式有点点区别, `[]`改成了`()`, 从使用上来说, `generators`和`iterables`都是类似`for in`的这种方式
+
+**但是** : `generators`**不是保存在内存中**的, 而是惰性加载的, 也就是你用到它的时候, 它才临时去计算, 只能使用一次`for in`, 比如上面的`mygenerator`, 计算`0*0`并返回之后就不在保留了, 继续计算`1*1`
+
+适用场景: 当需要迭代访问一组量非常大的数据集的时候, `generator`是非常有用的, 因为它计算完了前面的数据然后就计算后面, 并不在内存里保留所有的数据, 这样就不至于内存爆掉
+
+##3. yield
+
+理解了`generator`之后, 再来看`yield`就非常好理解了, 可以把`yield`当成`return`看待 
+
+    >>> def createGenerator():
+    ...    mylist = range(3)
+    ...    for i in mylist:
+    ...        yield i*i
+    ...
+    >>> mygenerator = createGenerator() # 创建一个生成器, 这里createGenerator内的代码并没有运行
+    >>> print(mygenerator) # 生成器就是一个object
+    <generator object createGenerator at 0xb7555c34>
+    >>>
+    >>> for i in mygenerator: # 这里createGenerator内的代码才开始运行
+    ...     print(i)
+    0
+    1
+    4
+
+上面的代码中当调用`createGenerator()`的时候, 其实方法内的代码并没有运行, 而在`for in`循环访问的时候, 才开始从头计算, 当运行到`yield`的时候返回第一个值, 然后就`停`下来, 当再次请求数据的时候继续运算直到再次碰到`yield`... 直到没有值可以返回
+
+参考文章: [The Python yield keyword explained](http://stackoverflow.com/questions/231767/the-python-yield-keyword-explained)

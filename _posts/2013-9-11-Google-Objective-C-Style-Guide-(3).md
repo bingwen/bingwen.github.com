@@ -1,13 +1,18 @@
 ---
-layout: default
+layout: post
+title: "Google Objective-C Style Guide (3) 命名"
+date: 2013-09-11 10:29:51
+category: "Google-Objective-C-Style-Guide"
+tags: google obj-c 
+author: bingwen
 ---
-
 
 ##命名
 
 命名规则在obc中非常的重要。obc的命名看上去一般都很长，但是正因为这样，代码可读性很好，也省了很多的注释
 
 编写代码的时候，我们应该遵循[Objective C 命名规范](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/CodingGuidelines/CodingGuidelines.html),这些命名规范很多都是从C++来的
+<!--break-->
 
 任何class，category，method或者变量都应该采用驼峰命名法，即里面的单词首字母要大写，当然像URL，TIFF，EXIF这些除外
 

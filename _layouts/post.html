@@ -1,0 +1,30 @@
+---
+layout: page_with_side
+---
+
+{{ content }}
+
+<p class="post-meta">{{ page.date | date: "%Y-%M-%d" }}{% if page.author %} by {{ page.author }}{% endif %}</p>
+<br>
+
+<!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="{{ page.id }}" data-title="{{ page.title }}" data-url="{{ site.url }}{{ page.url }}"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"sbw"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+
+<p class="post-meta">
+此文位于<a href="{{ site.url }}{{ page.url }}">{{ site.url }}{{ page.url }}</a> {% if page.author %} by {{ page.author }}{% endif %} <br>
+转载请以超链接形式标明文章原始出处和作者信息及版权声明.
+</p>

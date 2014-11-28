@@ -1,5 +1,10 @@
 ---
-layout: default
+layout: post
+title: "使用github pages搭建博客"
+date: 2013-09-09 10:29:51
+category: "技术"
+tags: python
+author: bingwen
 ---
 
 	#文件是否存在
@@ -16,3 +21,5 @@ layout: default
 	
 	#创建文件夹
 	os,mkdir(path)
+
+<!--break-->

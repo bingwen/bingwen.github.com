@@ -1,7 +1,15 @@
 ---
-layout: default
+layout: post
+title: "ssh自动登录"
+date: 2013-06-25 10:29:51
+category: "技术"
+tags: ssh 
+author: bingwen
 ---
+
+
 今天给我的MacBook Pro重装了一遍系统，运行速度健步如飞，然后需要重新配置一些东西，结果有些命令忘掉了，做个记录
+<!--break-->
 
 SSH免密码登陆
 ----------------

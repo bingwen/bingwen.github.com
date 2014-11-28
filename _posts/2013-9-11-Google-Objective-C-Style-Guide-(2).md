@@ -1,5 +1,10 @@
 ---
-layout: default
+layout: post
+title: "Google Objective-C Style Guide (2) 空格空行和格式"
+date: 2013-09-11 10:29:51
+category: "Google-Objective-C-Style-Guide"
+tags: google obj-c
+author: bingwen
 ---
 
 ##空格空行和格式
@@ -13,6 +18,7 @@ layout: default
 一行代码最多80个字符,你可以在你的.vimrc里面设置下面的命令
     set cc=80
 这样在vim中第80个字符的位置为一条红线来提醒你每次编码不超过这个数字
+<!--break-->
 
 ###方法的声明和定义
 

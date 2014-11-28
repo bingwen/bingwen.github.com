@@ -1,0 +1,24 @@
+<div class="site-side">
+  <div class="tag-list">
+    <h4>标签</h4>
+      <ul class="tag-box inline">
+      {% for tag in site.tags %}
+        <li> <a href="/tags.html?tag={{ tag[0] }}"> {{ tag[0] }}<sup>{{ tag[1].size }}</sup></a> </li>
+      {% endfor %}
+      </ul>
+  </div>
+
+  <br/>
+  <div class="arc-list">
+    <h4>主题</h4>
+     {% for category in site.categories %}
+       <li> <a href="/tags.html?tag={{ category | first }}">{{ category | first }}<sup>{{ category | last | size }}</sup></a> </li>
+     {% endfor %}
+  </div>
+
+  <br><br>
+  <div class="description-item"><a href="https://github.com/bingwen">Github主页</a></div>
+  <div class="description-item"><a href="http://www.douban.com/people/shibingwen/">豆瓣主页</a></div>
+  <div class="description-item"><a href="mailto:bingwen.2048@gmail.com">bingwen.2048@gmail.com</a></div>
+  <br><br>
+</div>

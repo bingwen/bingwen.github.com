@@ -1,0 +1,102 @@
+---
+layout: post
+title: "for循环中到底发生了什么"
+date: 2014-05-05 10:29:51
+category: "Python提高班"
+tags: python
+author: bingwen
+---
+我们都知道`for in`在代码中出现的次数相当的频繁, 那么你知道`for in`循环中到底发生了什么吗?
+
+答: 当我们调用一个`for x in dataContainer`的时候, 实际上是先调用了`dataContainer`的`__iter__()`方法来获得它的`iterator`(迭代器), 然后不断的调用`next()`方法, Python3.x里面是`__next__()`, 直到迭代器抛出`StopIteration`的异常, 停止
+<!--break-->
+
+##1. 什么是iterable和iterator
+
+上一篇[如何理解yield][1]中已经对`interable`已经略有介绍, 我们可以简单的认为可以使用`for in`的都是`iterable`的, 但是这只是从使用场景来说的, 下面就从它内部来说下
+
+* `iterable`: 如果一个数据容器定义了一个`__iter__()`方法, 那么它就是可迭代的
+* `iterator`: 如果一个`object`支持`迭代协议`, 也就是: 1. 定义一个`__iter__`返回它自身 2. 定义一个`next()`方法, 每次被调用的时候返回下一个值
+
+很明显`list` `dict`是`iterable`的, 但它不是`iterator`
+
+    >>> a = [1,2,3]
+    >>> a.__iter__
+    <method-wrapper '__iter__' of list object at 0x2ad2cf8>
+    >>> a.next()
+    Traceback (most recent call last):
+      File "<console>", line 1, in <module>
+    AttributeError: 'list' object has no attribute 'next'
+
+但是通过`__iter__`获得的就是它们的`iterator`迭代器
+
+    >>> ai = a.__iter__()
+    >>> ai
+    <listiterator object at 0x2dfe310>
+    >>> ai.next()
+    1
+    >>> ai.__iter__() is ai
+    True
+
+##2. 如何构建iterable的容器
+
+    class MyList(list):
+        def __iter__(self):
+            return MyListIter(self)
+
+    class MyListIter(object):
+        """一个实现List的Iterator的 Demo Class"""
+        def __init__(self, lst):
+            self.lst = lst
+            self.i = -1
+        def __iter__(self):
+            return self
+        def next(self):
+            if self.i<len(self.lst)-1:
+                self.i += 1         
+                return self.lst[self.i]
+            else:
+                raise StopIteration
+    
+    if __name__ == '__main__':
+        a = MyList([1, 2, 3, 4])
+        ia = iter(a)
+        print 'type(a): %r, type(ia): %r' %(type(a), type(ia))
+        for i in a: 
+            print i,
+
+上面的一段代码中 `MyListIter` 就实现了 `MyList`的迭代器, 运行结果应该是
+
+    type(a): <class '__main__.MyList'>, type(ia): <class '__main__.MyListIter'>
+    1 2 3 4
+
+##3. 如何把我们的变量iterable
+
+比如我们有一个需求, 需要返回所有`0~4`中数字和`a~e`中字母组合情况, 一般我们可能会这样写
+
+    class Combinations:
+        def __init__(self):
+            self.combs = []
+            for x in range(5):
+                for y in ['a', 'b', 'c', 'd', 'e']:
+                    self.combs.append("%s%s" % (x, y))
+
+    for c in Combinations().combs: print c
+
+这样的话, 我们每次都要调用`Combinations`的'combs'才能拿到所有的组合情况, 显然每次暴露`combs`出来非常的不优雅, 为什么不能`for c in Combinations()`这样呢?
+
+当然可以, 定义一个`__iter__`方法返回`combs`的迭代器就可以了
+
+    class Combinations:
+        def __init__(self):
+            self.combs = []
+            for x in range(5):
+                for y in ['a', 'b', 'c', 'd', 'e']:
+                    self.combs.append("%s%s" % (x, y))
+        def __iter__(self):
+            return iter(self.combs)
+
+    for c in Combinations(): print c
+
+
+参考文章: [Understanding Python Iterables and Iterators](http://www.shutupandship.com/2012/01/understanding-python-iterables-and.html)

@@ -1,5 +1,10 @@
 ---
-layout: default
+layout: post
+title: "Google Objective-C Style Guide (1) 背景"
+date: 2013-09-11 10:29:51
+category: "Google-Objective-C-Style-Guide"
+tags: google obj-c
+author: bingwen
 ---
 
 背景
@@ -8,6 +13,7 @@ obc是一门继承于C的动态的，面向对象的开发语言。它本身就�
 
 Aplle自己本已经有了一套非常好的，并且完整的编码规范，但是Google自己也写了一份，以便于更加规范的开发obc程序，本文就是翻译[Google Object C Style-Guid](http://google-styleguide.googlecode.com/svn/trunk/objcguide.xml)来的。
 
+<!--break-->
 在阅读本文之前，你最好阅读过 (<del>没读过也没关系</del>)：
 
 * [Apple的Cocoa编码规范](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/CodingGuidelines/CodingGuidelines.html)

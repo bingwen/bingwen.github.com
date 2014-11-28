@@ -1,0 +1,74 @@
+---
+layout: post
+title: "更Pythonic的使用dictionary"
+date: 2014-05-07 10:29:51
+category: "Python提高班"
+tags: python
+author: bingwen
+---
+下面介绍跟字典相关的一些代码的写法
+
+我们先定义一个dictionary
+
+    mydict = {'a': 1,'b': 2, 'c': 3}
+
+<!--break-->
+##1. 判断是否包含元素
+
+常见到的写法
+
+    mydict.has_key('a')
+
+推荐更pythonic写法
+
+    'a' in mydict
+
+##2. 判断是否不包含元素
+
+常见到的写法
+
+    not 'a' in mydict
+
+推荐更pythonic写法
+
+    'a' not in mydict
+
+##3. 元素不存在的时候返回默认值
+
+常见到的写法
+
+    if 'd' not in mydict:
+        mydict['d'] = 0
+    return mydict['d']
+
+推荐更pythonic写法
+
+    return mydict.get('d', 0)
+
+##4. 元素的默认值
+
+    print mydict.setdefault('e', [])
+
+`setdefault`方法会返回`mydict['e']`的值如果`'e'`元素存在, 如果不存在, 则会把`mydict['e']`设置为`[]`, 然后返回
+
+    mydict = defaultdict(list)
+    for x in ['a', 'b']:
+        mydict[x].append(100)
+
+`defaultdicy(list)`生成的`mydict`的每个元素的默认值都是空的`list`
+
+##5. 元素的排列顺序
+
+    mydict = {'a': 1,'b': 2, 'c': 3}
+    for k, v in mydict.iteritems():
+        print k
+
+像上面这段代码输出结果是什么?  是 `a b c` ?
+
+答案是`不一定`, 不相信你可以重复试几次, 有可能是`a c b`之类的结果
+
+所以`for in`遍历dictionary的时候, 遍历顺序`不一定`跟定义字典的时候元素排列顺序一致
+
+至于为什么, 跟CPyhon的实现有关, 稍后我再详细解释
+
+如果你需要一致的顺序, 请使用`OrderedDict`

@@ -1,7 +1,13 @@
 ---
-layout: default
+layout: post
+title: "python中使用pymongo来连接mongo数据库"
+date: 2014-05-05 10:29:51
+category: "技术"
+tags: python mongo
+author: bingwen
 ---
-###python中使用pymongo来连接mongo数据库  
+
+<!--break-->
 
 	import pymongo  
 

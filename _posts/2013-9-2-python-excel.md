@@ -1,8 +1,15 @@
 ---
-layout: default
+layout: post
+title: "python excel"
+date: 2013-09-02 10:29:51
+category: "技术"
+tags: python
+author: bingwen
 ---
 
+
 使用python**简单**的读写excel主要可以使用两个类库，一个是xlrd，一个是xlwt
+<!--break-->
 
 xlrd
 =====

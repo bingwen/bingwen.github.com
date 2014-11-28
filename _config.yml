@@ -1,2 +1,15 @@
-markdown: rdiscount
-pygments: true
+# Site settings
+title: 阿炳的博客 
+email: bingwen.2048@gmail.com
+description: 阿炳的博客
+baseurl: ""
+url: "http://blog.sbw.me"
+github_username: bingwen 
+
+# Build settings
+markdown: kramdown
+permalink: /blog/:title
+
+##
+paginate: 10
+paginate_path: "page:num"
